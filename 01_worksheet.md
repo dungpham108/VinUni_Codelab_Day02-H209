@@ -1,12 +1,11 @@
 # Lab 02 — Worksheet: AI Product Scoping (Vin Smart Future)
 
----
-
 ## 🏛️ 1. Bối cảnh thực tế: Vin Smart Future (Vingroup)
 
-**Vingroup** — Tập đoàn tư nhân lớn nhất Việt Nam — vừa sáp nhập toàn bộ các phòng ban công nghệ thuộc các công ty thành viên thành một đơn vị công nghệ thống nhất mang tên **Vin Smart Future**. 
+**Vingroup** — Tập đoàn tư nhân lớn nhất Việt Nam — vừa sáp nhập toàn bộ các phòng ban công nghệ thuộc các công ty thành viên thành một đơn vị công nghệ thống nhất mang tên **Vin Smart Future**.
 
 Nhiệm vụ của **Vin Smart Future** là xây dựng các giải pháp AI, số hóa, và tự động hóa cốt lõi để nâng cao hiệu suất vận hành và trải nghiệm khách hàng xuyên suốt các công ty thành viên:
+
 * 🚗 **VinFast:** Hệ thống xe điện thông minh (EV), trợ lý AI ảo trong xe, dự đoán bảo trì pin, và quản lý chuỗi cung ứng sản xuất.
 * 🚕 **Xanh SM (GSM):** Vận hành đội xe taxi/xe máy điện thông minh, điều vận thông minh (Smart Dispatching), tối ưu hóa lộ trình di chuyển.
 * 🏢 **Vinhomes:** Quản lý đô thị thông minh (Smart Cities), trợ lý cư dân thông minh, tối ưu hóa mức tiêu thụ năng lượng.
@@ -38,7 +37,7 @@ Trong buổi Lab hôm nay, nhóm của bạn sẽ đóng vai trò là **AI Produ
 
 ---
 
-# 🚀 Phase 0 — worked Example: Xanh SM Intelligent Dispatcher (15 min)
+# 🚀 Phase 0 — Worked Example: Xanh SM Intelligent Dispatcher (15 min)
 
 *Giảng viên walk-through ví dụ thực tế từ Vin Smart Future để bạn hiểu rõ cách scoping một bài toán AI.*
 Đọc chi tiết worked example tại file [02-deliverable-example.md](02-deliverable-example.md).
@@ -63,11 +62,11 @@ Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận
 ### 📝 List bài toán của tôi:
 | # | Subsidiary (VinFast/Xanh SM...) | Lens | Mô tả ngắn bài toán |
 |---|----------------------------------|------|---------------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
+| 1 | Vingroup (VinFast/Vinhomes/Vinpearl) | AI-upgrade & Stakeholder Pain | Xử lý & Phân loại khiếu nại chính thức đa ngành và điều phối liên công ty thành viên |
+| 2 | VinFast | Time-consuming | Chẩn đoán nguyên nhân sự cố sạc/pin từ nhật ký IoT Telemetry trước khi chuyển kỹ thuật |
+| 3 | Vinhomes | Repetitive | Tự động hóa tiếp nhận và tra cứu quy chế cư dân, xử lý sự cố sinh hoạt hằng ngày |
+| 4 | Xanh SM | AI-upgrade | Cảnh báo sớm giận dữ khách hàng (Sentiment Shield) và tự động nâng cấp độ ưu tiên |
+| 5 | Vinpearl | Time-consuming | Xử lý yêu cầu hoàn tiền và hủy phòng tự động tuân thủ điều khoản tài chính |
 
 ---
 
@@ -75,33 +74,88 @@ Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận
 
 Chọn **top 3 bài toán** từ danh sách trên và hoàn thiện **3 Quick Problem Cards** dưới đây (10 phút/card).
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #___                                     │
+│ QUICK PROBLEM CARD #01                                      │
 │                                                             │
-│ Bài toán (1 câu): ________________________________________  │
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
-│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
+│ Bài toán (1 câu): AI Agent tiếp nhận, tự động tích hợp dữ  │
+│ liệu đa hệ thống và điều phối xử lý khiếu nại cho Vingroup. │
+│ Công ty thành viên: [x] VinFast  [x] Xanh SM  [x] Vinhomes  │
+│                     [ ] Vinmec   [x] Vinpearl               │
 │                                                             │
-│ Ai đang đau (Actor)? ______________________________________ │
+│ Ai đang đau (Actor)? CS Specialist, CS Team Lead, QA        │
 │                                                             │
 │ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. ___ ──> 2. ___ ──> 3. ___ ──> 4. ___                   │
+│   1. Tiếp nhận đa kênh ──> 2. Copy/Input CRM thủ công       │
+│   ──> 3. Tra cứu cross-system ──> 4. Routing & Phản hồi     │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? ___ (⏱ ___ phút/lượt)      │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? _____________________ │
+│ Bước nào tốn thời gian/lỗi nhất? Phân loại, tra cứu RAG &   │
+│ routing chéo phòng ban (⏱ 120-240 phút/lượt)                │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Tự động phân loại,    │
+│ trích xuất dữ liệu, RAG chính sách và draft câu trả lời.    │
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)? ______________________ │
-│   VD: "Giảm thời gian soạn phản hồi từ 10 min ──> under 2 min"│
+│ Đo thành công bằng gì (Metric có số)?                       │
+│   - Routing Accuracy ≥ 95%                                  │
+│   - Thời gian phân loại & xử lý bước đầu từ 120m ──> <30s   │
+│   - SLA Compliance Rate toàn trình ≥ 98%                    │
 │                                                             │
-│ Quick Architecture: [ ] No AI  [ ] Rule  [ ] LLM  [ ] Agent │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [ ] LLM  [x] Agent │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-> [!TIP]
-> **🤖 AI Prompts — Stress-Test thẻ bài toán:**
-> Hãy dán nội dung thẻ bài toán của bạn vào LLM để nhận phản biện:
-> *"Đây là một thẻ bài toán vận hành tôi đề xuất cho Vin Smart Future: [Dán nội dung]. Hãy đóng vai trò là một CFO và Trưởng phòng Vận hành cực kỳ khắt khe, chỉ ra cho tôi 3 điểm yếu về logic, metric, và giải thích vì sao rule-based code thông thường có thể giải quyết bài toán này tốt hơn là dùng AI."*
+```text
+┌─────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #02                                      │
+│                                                             │
+│ Bài toán (1 câu): Chẩn đoán sự cố kỹ thuật tự động qua IoT │
+│ Log cho xe điện VinFast và hệ thống Smart Home Vinhomes.    │
+│ Công ty thành viên: [x] VinFast  [ ] Xanh SM  [x] Vinhomes  │
+│                     [ ] Vinmec   [ ] Khác                   │
+│                                                             │
+│ Ai đang đau (Actor)? Đội Kỹ thuật viên & CS Support         │
+│                                                             │
+│ Workflow thủ công hiện tại (3-5 bước):                      │
+│   1. Nhận báo lỗi ──> 2. Xuất Log thủ công từ Server        │
+│   ──> 3. Phân tích mã lỗi ──> 4. Xếp lịch điều xe kỹ thuật   │
+│                                                             │
+│ Bước nào tốn thời gian/lỗi nhất? Xuất & Đọc log lỗi (⏱ 60m) │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Đọc Telemetry Log tự  │
+│ động và đề xuất nguyên nhân gốc (Root Cause Diagnostic).    │
+│                                                             │
+│ Đo thành công bằng gì (Metric có số)?                       │
+│   - Giảm thời gian chẩn đoán ban đầu từ 60m ──> <2m         │
+│   - Độ chính xác chẩn đoán nguyên nhân gốc ≥ 90%            │
+│                                                             │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [ ] LLM  [x] Agent │
+└─────────────────────────────────────────────────────────────┘
+```
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #03                                      │
+│                                                             │
+│ Bài toán (1 câu): Cảnh báo sớm rủi ro truyền thông và leo   │
+│ thang cảm xúc tiêu cực của khách hàng (Sentiment Shield).    │
+│ Công ty thành viên: [x] VinFast  [x] Xanh SM  [x] Vinhomes  │
+│                     [x] Vinpearl                            │
+│                                                             │
+│ Ai đang đau (Actor)? CS Lead & Đội ngũ Truyền thông Tập đoàn│
+│                                                             │
+│ Workflow thủ công hiện tại (3-5 bước):                      │
+│   1. Tiếp nhận khiếu nại ──> 2. Xử lý theo thứ tự FIFO      │
+│   ──> 3. Khách giận dữ bùng nổ ──> 4. Báo cáo khẩn lên Lead │
+│                                                             │
+│ Bước nào tốn thời gian/lỗi nhất? Phát hiện rủi ro (⏱ 24h)   │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Real-time Sentiment   │
+│ & Keyword Analysis để tự động Auto-Escalate ngay lập tức.    │
+│                                                             │
+│ Đo thành công bằng gì (Metric có số)?                       │
+│   - Phát hiện 100% case nguy cơ khủng hoảng trong < 1 phút  │
+│   - Giảm 80% case khiếu nại leo thang lên Mạng xã hội       │
+│                                                             │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ---
 

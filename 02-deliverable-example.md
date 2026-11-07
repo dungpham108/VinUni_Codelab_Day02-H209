@@ -21,46 +21,50 @@ Dùng **4 Lenses** quét qua vận hành của các công ty thành viên Vingro
 
 | # | Subsidiary | Lens | Mô tả ngắn bài toán |
 |---|------------|------|---------------------|
-| 1 | **Xanh SM** | Lặp lại | So khớp và phân bổ lại cuốc xe khi khách hàng yêu cầu thay đổi điểm đến giữa chừng. |
-| 2 | **Xanh SM** | Tốn thời gian | Điều phối viên xử lý thủ công các phản hồi khẩn cấp từ tài xế về sự cố sạc pin hoặc va chạm thực địa (mất 15-20 min/lượt). |
-| 3 | **VinFast** | Lặp lại | So khớp hóa đơn sạc điện và đối chiếu số liệu trạm sạc đối tác hằng tuần. |
-| 4 | **Vinhomes** | AI-upgrade | Hệ thống phân loại và route tự động các phản hồi/khiếu nại của cư dân trên App Vinhomes Resident (CSKH phản hồi rập khuôn, mất 12 tiếng). |
-| 5 | **Vinmec** | Pain từ người khác | Bác sĩ mất quá nhiều thời gian viết tóm tắt hồ sơ xuất viện (mất 20-30 phút/bệnh nhân, bác sĩ phàn nàn vì quá tải). |
-| 6 | **Xanh SM** | Tốn thời gian | Tóm tắt lý do khách hàng hủy chuyến từ cuộc gọi ghi âm và ghi chú của tài xế để tìm pattern lỗi hệ thống. |
+| 1 | **Vingroup Tập đoàn** | AI-upgrade & Stakeholder Pain | Xử lý & Phân loại khiếu nại chính thức đa ngành và điều phối liên công ty thành viên. |
+| 2 | **VinFast** | Time-consuming | Chẩn đoán nguyên nhân sự cố sạc/pin từ nhật ký IoT Telemetry trước khi chuyển kỹ thuật. |
+| 3 | **Vinhomes** | Repetitive | Tự động hóa tiếp nhận và tra cứu quy chế cư dân, xử lý sự cố sinh hoạt hằng ngày. |
+| 4 | **Xanh SM** | AI-upgrade | Cảnh báo sớm giận dữ khách hàng (Sentiment Shield) và tự động nâng cấp độ ưu tiên. |
+| 5 | **Vinpearl** | Time-consuming | Xử lý yêu cầu hoàn tiền và hủy phòng tự động tuân thủ điều khoản tài chính. |
+| 6 | **Vinmec** | Pain từ người khác | Bác sĩ mất quá nhiều thời gian viết tóm tắt hồ sơ xuất viện (mất 20-30 phút/bệnh nhân, bác sĩ phàn nàn vì quá tải). |
 
 ---
 
 # 🃏 Phase 2 — QUICK-ASSESS: 3 Quick Problem Cards (Cá nhân)
 
-Chọn top 3 từ danh sách SCAN: **#2 (Xanh SM Sự cố sạc), #4 (Vinhomes CSKH), #6 (Xanh SM Hủy chuyến).**
+Chọn top 3 từ danh sách SCAN: **#1 (Vingroup Khiếu nại đa ngành), #2 (VinFast Chẩn đoán IoT Log), #4 (Xanh SM Sentiment Shield).**
 
-## Thẻ bài toán tiêu biểu: Card #2 — Xanh SM Xử lý sự cố sạc pin thực địa
+## Thẻ bài toán tiêu biểu: Card #1 — AI Agent Điều phối & Giải quyết khiếu nại đa ngành Vingroup
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #2                                       │
+│ QUICK PROBLEM CARD #1                                       │
 │                                                             │
-│ Bài toán: Tài xế Xanh SM báo cáo sự cố sạc pin / hết pin    │
-│ giữa đường cần điều phối cứu hộ hoặc trạm sạc gần nhất.     │
-│ Công ty thành viên: [x] Xanh SM (GSM)                       │
+│ Bài toán: AI Agent tiếp nhận, tự động tích hợp dữ liệu đa  │
+│ hệ thống và điều phối xử lý khiếu nại cho Vingroup.         │
+│ Công ty thành viên: [x] VinFast  [x] Xanh SM  [x] Vinhomes  │
+│                     [ ] Vinmec   [x] Vinpearl               │
 │                                                             │
-│ Ai đang đau? Tài xế (chờ đợi), Điều phối viên (quá tải)     │
+│ Ai đang đau? CS Specialist, CS Team Lead, QA Team           │
 │                                                             │
 │ Workflow thủ công hiện tại (5 bước):                        │
-│   1. Tài xế gọi tổng đài điều vận báo hết pin               │
-│   → 2. Điều phối viên tra cứu thủ công vị trí xe trên bản đồ│
-│   → 3. Tra cứu thủ công các trạm sạc VinFast còn trụ trống   │
-│   → 4. Viết tin nhắn chỉ dẫn/đường đi gửi qua App tài xế    │
-│   → 5. Liên hệ đội xe cứu hộ nếu xe đã cạn kiệt pin         │
+│   1. Tiếp nhận đa kênh (Hotline/Email/App)                  │
+│   → 2. Nhập liệu CRM thủ công & tra cứu cross-system        │
+│   → 3. Phân loại & Routing thủ công qua Zalo/Teams          │
+│   → 4. Tra cứu quy chế hợp đồng/bồi thường                  │
+│   → 5. Soạn thư phản hồi & báo cáo Excel                    │
 │                                                             │
-│ Bước nào tốn nhất? Bước 3-4 (⏱ 12 phút/lượt)                │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 3-4              │
-│ (Tự động hóa lấy vị trí -> Tra cứu trạm trống -> Draft tin) │
+│ Bước nào tốn nhất? Phân loại, tra cứu RAG & routing chéo     │
+│ (⏱ 120 - 240 phút/lượt)                                     │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 2, 3 & 4          │
+│ (Trích xuất NLU -> Federated Routing -> RAG -> Draft Text)   │
 │                                                             │
 │ Đo thành công bằng gì (Metric có số)?                        │
-│ Giảm thời gian xử lý sự cố từ 15 phút ──> dưới 3 phút.      │
+│ - Tỷ lệ routing chính xác (Routing Accuracy) ≥ 95%.         │
+│ - Giảm thời gian phân loại & xử lý bước đầu từ 120m ──> <30s│
+│ - Tỷ lệ tuân thủ SLA toàn trình ≥ 98%.                      │
 │                                                             │
-│ Quick Architecture: [x] LLM Feature (Tự động soạn chỉ dẫn)   │
+│ Quick Architecture: [x] Agentic Loop (Cross-system & RAG)   │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -84,7 +88,7 @@ Quy trình xử lý sự cố hết pin thực địa hiện tại của điều
 ┌──────────────┐     ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
 │ Bước 1       │     │ Bước 2       │     │ Bước 3       │     │ Bước 4       │
 │ Nhận cuộc    │     │ Tra cứu định │     │ Tra cứu trạm │     │ Soạn văn bản │
-│ gọi sự cố    │ ──→ │ vị GPS xe   │ ──→ │ sạc VinFast  │ ──→ │ hướng dẫn    │
+│ gọi sự cố    │ ──→ │ vị GPS xe    │ ──→ │ sạc VinFast  │ ──→ │ hướng dẫn    │
 │              │     │              │     │ còn trụ trống│     │ gửi tài xế   │
 │ Ai: Dispatch │     │ Ai: Dispatch │     │ Ai: Dispatch │     │ Ai: Dispatch │
 │ ⏱ 2 phút     │     │ ⏱ 2 phút     │     │ ⏱ 5 phút 🔴  │     │ ⏱ 5 phút 🔴  │
